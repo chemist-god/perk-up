@@ -73,8 +73,8 @@ export function Header() {
                         <Button className="bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold rounded-full px-5 h-10">
                             Book a demo
                         </Button>
-                        <Button variant="outline" className="rounded-full px-5 h-10 border-foreground/20 hover:bg-muted font-medium">
-                            Get started
+                        <Button variant="outline" className="rounded-full px-5 h-10 border-foreground/20 hover:bg-muted font-medium" asChild>
+                            <Link href="/get-started">Get started</Link>
                         </Button>
                         <Button variant="ghost" size="icon" className="w-9 h-9">
                             <User className="h-5 w-5" />
@@ -98,7 +98,9 @@ export function Header() {
                                 <Link href="#" className="text-lg font-medium">Integrations</Link>
                                 <div className="h-px bg-border my-2" />
                                 <Button className="w-full bg-[#BAFF4C] text-black hover:bg-[#a3e63d] rounded-full">Book a demo</Button>
-                                <Button variant="outline" className="w-full rounded-full">Get started</Button>
+                                <Button variant="outline" className="w-full rounded-full" asChild>
+                                    <Link href="/get-started">Get started</Link>
+                                </Button>
                             </nav>
                         </SheetContent>
                     </Sheet>
