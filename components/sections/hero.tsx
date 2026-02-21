@@ -5,7 +5,7 @@ import { Clock, Star } from "lucide-react";
 
 export function Hero() {
     return (
-        <Section className="pt-10 pb-16 md:pt-16 md:pb-32 bg-[#F9F9F5] overflow-hidden">
+        <Section className="pt-32 pb-16 md:pt-36 md:pb-32 bg-[#F9F9F5] overflow-hidden">
             <div className="container px-4 md:px-6 relative flex flex-col items-center text-center">
 
                 {/* Headline & Subheadline */}
