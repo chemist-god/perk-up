@@ -105,7 +105,7 @@ export default function GetStartedPage() {
 
                         <p className="mt-10 text-center text-sm text-muted-foreground">
                             Already have an account?{" "}
-                            <Link href="#" className="font-semibold leading-6 text-foreground hover:text-primary transition-colors">
+                            <Link href="/login" className="font-semibold leading-6 text-foreground hover:text-primary transition-colors">
                                 Log in
                             </Link>
                         </p>
