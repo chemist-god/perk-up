@@ -55,28 +55,52 @@ export function Header() {
 
                     <Sheet>
                         <SheetTrigger asChild>
-                            <Button variant="ghost" size="icon" className="md:hidden text-black hover:bg-black/5">
+                            <Button variant="ghost" size="icon" className="md:hidden text-black hover:bg-black/5 rounded-full">
                                 <Menu className="h-6 w-6" />
                                 <span className="sr-only">Toggle menu</span>
                             </Button>
                         </SheetTrigger>
-                        <SheetContent side="right" className="bg-[#F3F4ED]">
-                            <nav className="flex flex-col gap-4 mt-8">
-                                <Link href="#" className="text-lg font-medium text-black">Product</Link>
-                                <Link href="#" className="text-lg font-medium text-black">Solutions</Link>
-                                <Link href="#" className="text-lg font-medium text-black">Customers</Link>
-                                <Link href="#" className="text-lg font-medium text-black">Pricing</Link>
-                                <Link href="#" className="text-lg font-medium text-black">Integrations</Link>
-                                <div className="h-px bg-border my-2" />
-                                <Button className="w-full bg-[#BAFF4C] text-black hover:bg-[#a3e63d] rounded-full font-semibold">
-                                    Book a demo <ChevronRight className="ml-1 h-4 w-4" />
-                                </Button>
-                                <Button variant="outline" className="w-full rounded-full border-foreground/20 text-black hover:bg-[#BAFF4C] hover:border-[#BAFF4C] hover:text-black font-semibold transition-colors" asChild>
-                                    <Link href="/get-started">
-                                        Get started <ChevronRight className="ml-1 h-4 w-4" />
-                                    </Link>
-                                </Button>
-                            </nav>
+                        <SheetContent
+                            side="top"
+                            className="w-[92%] sm:max-w-md mx-auto top-[76px] rounded-3xl bg-[#F3F4ED]/85 backdrop-blur-2xl border border-black/10 p-6 shadow-2xl data-[state=closed]:duration-200 data-[state=open]:duration-300"
+                            style={{
+                                left: "50%",
+                                transform: "translateX(-50%)",
+                                right: "auto"
+                            }}
+                        >
+                            <div className="flex flex-col gap-6 mt-2">
+                                {/* Mobile Header Logo */}
+                                <Link href="/" className="flex items-center gap-2 mb-2">
+                                    <Logo className="h-7 w-auto text-[#BAFF4C]" />
+                                    <span className="font-bold text-xl tracking-tight text-black">
+                                        perk
+                                    </span>
+                                </Link>
+
+                                {/* Navigation Links */}
+                                <nav className="flex flex-col gap-5">
+                                    <Link href="#" className="text-xl font-semibold text-black hover:text-black/70 transition-colors">Product</Link>
+                                    <Link href="#" className="text-xl font-semibold text-black hover:text-black/70 transition-colors">Solutions</Link>
+                                    <Link href="#" className="text-xl font-semibold text-black hover:text-black/70 transition-colors">Customers</Link>
+                                    <Link href="#" className="text-xl font-semibold text-black hover:text-black/70 transition-colors">Pricing</Link>
+                                    <Link href="#" className="text-xl font-semibold text-black hover:text-black/70 transition-colors">Integrations</Link>
+                                </nav>
+
+                                <div className="h-px bg-black/10 my-1" />
+
+                                {/* Mobile CTAs */}
+                                <div className="flex flex-col gap-3 pb-4">
+                                    <Button className="w-full h-12 bg-[#BAFF4C] text-black hover:bg-[#a3e63d] rounded-full font-semibold text-base shadow-sm">
+                                        Book a demo <ChevronRight className="ml-1 h-5 w-5" />
+                                    </Button>
+                                    <Button variant="outline" className="w-full h-12 rounded-full border-black/20 text-black hover:bg-[#BAFF4C] hover:border-[#BAFF4C] hover:text-black font-semibold transition-colors text-base bg-transparent" asChild>
+                                        <Link href="/get-started">
+                                            Get started <ChevronRight className="ml-1 h-5 w-5" />
+                                        </Link>
+                                    </Button>
+                                </div>
+                            </div>
                         </SheetContent>
                     </Sheet>
                 </div>
