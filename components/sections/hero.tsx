@@ -43,14 +43,14 @@ export function Hero() {
                         />
                     </div>
 
-                    {/* Mid Left: Expense submitted - Moved down from top */}
-                    <div className="absolute top-[45%] left-[2%] md:left-[5%] lg:left-[12%] z-20 hidden sm:block animate-in fade-in zoom-in duration-700 delay-300">
+                    {/* Mid Left (Mobile & Desktop): Expense submitted / Arriving on time */}
+                    <div className="absolute top-[35%] sm:top-[45%] left-[-2%] sm:left-[2%] md:left-[5%] lg:left-[12%] z-20 block animate-in fade-in zoom-in duration-700 delay-300">
                         <Image
                             src="/images/img_4.jpeg"
                             alt="Expense submitted"
                             width={180}
                             height={60}
-                            className="w-[120px] md:w-[140px] lg:w-[160px] h-auto rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
+                            className="w-[130px] sm:w-[120px] md:w-[140px] lg:w-[160px] h-auto rounded-full shadow-[0_8px_30px_rgb(0,0,0,0.12)]"
                         />
                     </div>
 
@@ -76,14 +76,14 @@ export function Hero() {
                         />
                     </div>
 
-                    {/* Bottom Right: Mark Adams */}
-                    <div className="absolute bottom-[10%] right-[8%] md:right-[12%] lg:right-[18%] z-20 hidden sm:block animate-in fade-in zoom-in duration-700 delay-600">
+                    {/* Top Right (Mobile), Bottom Right (Desktop): Mark Adams */}
+                    <div className="absolute top-[5%] sm:top-auto sm:bottom-[10%] right-[-2%] sm:right-[8%] md:right-[12%] lg:right-[18%] z-20 block animate-in fade-in zoom-in duration-700 delay-600">
                         <Image
                             src="/images/img_5.jpeg"
                             alt="Mark Adams"
                             width={220}
                             height={80}
-                            className="w-[150px] md:w-[190px] lg:w-[240px] h-auto rounded-xl shadow-lg"
+                            className="w-[140px] sm:w-[150px] md:w-[190px] lg:w-[240px] h-auto rounded-xl shadow-lg"
                         />
                     </div>
                 </div>
