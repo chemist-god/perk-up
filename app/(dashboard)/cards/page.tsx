@@ -181,13 +181,14 @@ export default function CardsPage() {
                             {/* Card Item 3 (Locked) */}
                             <div className="flex flex-col gap-4">
                                 <div className="h-56 rounded-2xl bg-gray-100 p-6 flex flex-col justify-between text-black/40 shadow-sm relative overflow-hidden group w-full max-w-sm mx-auto sm:max-w-none border border-black/5">
-                                    <div className="absolute inset-0 backdrop-blur-[2px] z-0 flex items-center justify-center">
-                                        <Lock className="h-12 w-12 text-black/20" />
-                                    </div>
-                                    <div className="flex justify-between items-start z-10 w-full opacity-50">
+                                    <div className="absolute inset-0 backdrop-blur-[2px] z-0" />
+                                    <div className="flex justify-between items-start z-10 w-full opacity-60">
                                         <div className="flex items-center gap-2">
                                             <span className="font-bold tracking-tight text-xl">perk</span>
                                             <span className="px-2 py-0.5 rounded-md bg-black/10 text-[10px] font-medium uppercase tracking-wider">Virtual</span>
+                                        </div>
+                                        <div className="h-8 w-8 rounded-full bg-black/5 flex items-center justify-center backdrop-blur-md shadow-sm border border-black/5">
+                                            <Lock className="h-4 w-4 text-black/50" />
                                         </div>
                                     </div>
                                     <div className="z-10 w-full opacity-50">
@@ -235,11 +236,18 @@ export default function CardsPage() {
                         </div>
                     </TabsContent>
                     <TabsContent value="physical" className="mt-6">
-                        <div className="flex flex-col items-center justify-center p-12 text-center border border-black/5 border-dashed rounded-2xl bg-white max-w-3xl mx-auto">
-                            <CreditCard className="h-12 w-12 text-black/20 mb-4" />
-                            <h3 className="text-lg font-bold text-black mb-2">No Physical Cards</h3>
-                            <p className="text-black/60 text-sm max-w-sm mb-6">You currently don't have any active physical corporate cards assigned to you.</p>
-                            <Button className="h-10 rounded-full bg-black text-white hover:bg-black/80 font-semibold shadow-sm text-[13px] px-6">
+                        <div className="flex flex-col items-center justify-center p-8 sm:p-16 text-center border-2 border-black/5 border-dashed rounded-3xl bg-white max-w-4xl mx-auto shadow-sm transition-all hover:border-black/10">
+                            <div className="relative mb-6">
+                                <div className="absolute inset-0 bg-[#BAFF4C]/20 blur-2xl rounded-full" />
+                                <div className="h-20 w-20 bg-[#BAFF4C]/10 rounded-2xl flex items-center justify-center relative border border-[#BAFF4C]/20 text-[#BAFF4C]">
+                                    <CreditCard className="h-10 w-10 text-black/70" />
+                                </div>
+                            </div>
+                            <h3 className="text-xl sm:text-2xl font-bold text-black mb-3">No Physical Cards Active</h3>
+                            <p className="text-black/60 text-[14px] sm:text-[15px] max-w-md mb-8 leading-relaxed">
+                                You currently don't have any active physical corporate cards assigned to you. Request one below to start spending in-person.
+                            </p>
+                            <Button className="h-11 rounded-full bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold shadow-sm text-[14px] px-8 transition-transform hover:scale-[1.02]">
                                 Request Physical Card
                             </Button>
                         </div>
