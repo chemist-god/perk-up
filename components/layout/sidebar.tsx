@@ -47,34 +47,34 @@ const data = {
         },
         {
             title: "Transactions",
-            url: "#",
+            url: "/transactions",
             icon: Receipt,
         },
         {
             title: "Corporate Cards",
-            url: "#",
+            url: "/cards",
             icon: CreditCard,
         },
         {
             title: "Reimbursements",
-            url: "#",
+            url: "/reimbursements",
             icon: Wallet,
         },
         {
             title: "Analytics",
-            url: "#",
+            url: "/analytics",
             icon: PieChart,
         },
     ],
     navSettings: [
         {
             title: "Company Profile",
-            url: "#",
+            url: "/settings/company",
             icon: Building2,
         },
         {
             title: "Settings",
-            url: "#",
+            url: "/settings",
             icon: Settings2,
         },
     ]
@@ -107,8 +107,8 @@ export function MainSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
                                             isActive={isActive}
                                             tooltip={item.title}
                                             className={`rounded-xl h-11 transition-all ${isActive
-                                                    ? 'bg-[#BAFF4C] text-black font-semibold shadow-sm'
-                                                    : 'text-black/70 hover:bg-black/5 hover:text-black font-medium'
+                                                ? 'bg-[#BAFF4C] text-black font-semibold shadow-sm'
+                                                : 'text-black/70 hover:bg-black/5 hover:text-black font-medium'
                                                 }`}
                                         >
                                             <Link href={item.url} className="flex items-center gap-3 px-3">
