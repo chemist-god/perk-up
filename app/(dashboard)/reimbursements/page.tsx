@@ -205,25 +205,46 @@ export default function ReimbursementsPage() {
                         </div>
                     </TabsContent>
 
-                    <TabsContent value="pending">
-                        <div className="flex items-center justify-center p-12 text-center border border-black/5 border-dashed rounded-2xl bg-white max-w-2xl mx-auto">
-                            <Clock className="h-8 w-8 text-black/20 mb-3" />
-                            <h3 className="text-[15px] font-bold text-black mb-1">Filters applied</h3>
-                            <p className="text-black/50 text-[13px]">Viewing only pending requests (placeholder view).</p>
+                    <TabsContent value="pending" className="mt-6">
+                        <div className="flex flex-col items-center justify-center p-8 sm:p-14 text-center border-2 border-black/5 border-dashed rounded-3xl bg-white max-w-3xl mx-auto shadow-sm transition-all hover:border-black/10">
+                            <div className="relative mb-5">
+                                <div className="absolute inset-0 bg-orange-500/10 blur-xl rounded-full" />
+                                <div className="h-16 w-16 bg-orange-50 rounded-2xl flex items-center justify-center relative border border-orange-100/50 text-orange-600">
+                                    <Clock className="h-8 w-8 text-orange-500" />
+                                </div>
+                            </div>
+                            <h3 className="text-lg sm:text-xl font-bold text-black mb-2">No Pending Requests</h3>
+                            <p className="text-black/50 text-[14px] max-w-sm mb-2 leading-relaxed">
+                                Great job! You have no pending reimbursement requests awaiting your review at this time.
+                            </p>
                         </div>
                     </TabsContent>
-                    <TabsContent value="approved">
-                        <div className="flex items-center justify-center p-12 text-center border border-black/5 border-dashed rounded-2xl bg-white max-w-2xl mx-auto">
-                            <CheckCircle2 className="h-8 w-8 text-black/20 mb-3" />
-                            <h3 className="text-[15px] font-bold text-black mb-1">Filters applied</h3>
-                            <p className="text-black/50 text-[13px]">Viewing only approved requests (placeholder view).</p>
+                    <TabsContent value="approved" className="mt-6">
+                        <div className="flex flex-col items-center justify-center p-8 sm:p-14 text-center border-2 border-black/5 border-dashed rounded-3xl bg-white max-w-3xl mx-auto shadow-sm transition-all hover:border-black/10">
+                            <div className="relative mb-5">
+                                <div className="absolute inset-0 bg-[#BAFF4C]/20 blur-xl rounded-full" />
+                                <div className="h-16 w-16 bg-[#BAFF4C]/10 rounded-2xl flex items-center justify-center relative border border-[#BAFF4C]/30 text-green-700">
+                                    <CheckCircle2 className="h-8 w-8 text-green-700" />
+                                </div>
+                            </div>
+                            <h3 className="text-lg sm:text-xl font-bold text-black mb-2">No Approved Requests</h3>
+                            <p className="text-black/50 text-[14px] max-w-sm mb-2 leading-relaxed">
+                                You haven't approved any reimbursement requests yet. They will appear here once approved.
+                            </p>
                         </div>
                     </TabsContent>
-                    <TabsContent value="paid">
-                        <div className="flex items-center justify-center p-12 text-center border border-black/5 border-dashed rounded-2xl bg-white max-w-2xl mx-auto">
-                            <Receipt className="h-8 w-8 text-black/20 mb-3" />
-                            <h3 className="text-[15px] font-bold text-black mb-1">Filters applied</h3>
-                            <p className="text-black/50 text-[13px]">Viewing only paid requests (placeholder view).</p>
+                    <TabsContent value="paid" className="mt-6">
+                        <div className="flex flex-col items-center justify-center p-8 sm:p-14 text-center border-2 border-black/5 border-dashed rounded-3xl bg-white max-w-3xl mx-auto shadow-sm transition-all hover:border-black/10">
+                            <div className="relative mb-5">
+                                <div className="absolute inset-0 bg-black/5 blur-xl rounded-full" />
+                                <div className="h-16 w-16 bg-black/5 rounded-2xl flex items-center justify-center relative border border-black/10 text-black/70">
+                                    <Receipt className="h-8 w-8 text-black/60" />
+                                </div>
+                            </div>
+                            <h3 className="text-lg sm:text-xl font-bold text-black mb-2">No Paid Requests</h3>
+                            <p className="text-black/50 text-[14px] max-w-sm mb-2 leading-relaxed">
+                                No reimbursement requests have been marked as paid yet. History will be preserved here.
+                            </p>
                         </div>
                     </TabsContent>
                 </Tabs>
