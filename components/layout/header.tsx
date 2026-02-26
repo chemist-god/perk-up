@@ -7,6 +7,7 @@ import { Logo } from "@/components/icons/logo"
 import { Button } from "@/components/ui/button"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { Menu, Globe, User, ChevronDown, ChevronRight, Plus } from "lucide-react"
+import { toast } from "sonner"
 
 export function Header() {
     return (
@@ -35,7 +36,10 @@ export function Header() {
                     </div>
 
                     <div className="hidden md:flex items-center gap-2 lg:gap-3">
-                        <Button className="bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold rounded-full px-5 h-10 text-[14px]">
+                        <Button
+                            onClick={() => toast("Demo Requested", { description: "Our team will reach out to you shortly." })}
+                            className="bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold rounded-full px-5 h-10 text-[14px]"
+                        >
                             Book a demo <ChevronRight className="ml-1 h-4 w-4" />
                         </Button>
                         <Button
@@ -47,7 +51,12 @@ export function Header() {
                                 Get started <ChevronRight className="ml-1 h-4 w-4" />
                             </Link>
                         </Button>
-                        <Button variant="ghost" size="icon" className="w-10 h-10 rounded-full hover:bg-black/5 text-black">
+                        <Button
+                            variant="ghost"
+                            size="icon"
+                            onClick={() => toast("Account Access", { description: "Securely logging into your profile..." })}
+                            className="w-10 h-10 rounded-full hover:bg-black/5 text-black"
+                        >
                             <User className="h-[20px] w-[20px]" />
                             <span className="sr-only">Account</span>
                         </Button>
@@ -91,7 +100,10 @@ export function Header() {
 
                                 {/* Mobile CTAs */}
                                 <div className="flex flex-col gap-3 pb-4">
-                                    <Button className="w-full h-12 bg-[#BAFF4C] text-black hover:bg-[#a3e63d] rounded-full font-semibold text-base shadow-sm">
+                                    <Button
+                                        onClick={() => toast("Demo Requested", { description: "Our team will reach out to you shortly." })}
+                                        className="w-full h-12 bg-[#BAFF4C] text-black hover:bg-[#a3e63d] rounded-full font-semibold text-base shadow-sm"
+                                    >
                                         Book a demo <ChevronRight className="ml-1 h-5 w-5" />
                                     </Button>
                                     <Button variant="outline" className="w-full h-12 rounded-full border-black/20 text-black hover:bg-[#BAFF4C] hover:border-[#BAFF4C] hover:text-black font-semibold transition-colors text-base bg-transparent" asChild>
