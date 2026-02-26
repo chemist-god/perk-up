@@ -1,9 +1,12 @@
+"use client"
+
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { FileDown, Search, Filter, SlidersHorizontal, ArrowDown, ArrowUp } from "lucide-react"
+import { FileDown, Search, Filter, SlidersHorizontal, ArrowDown, ArrowUp, CheckCircle2 } from "lucide-react"
+import { toast } from "sonner"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import {
@@ -42,7 +45,14 @@ export default function TransactionsPage() {
                     </Breadcrumb>
                 </div>
                 <div className="flex items-center gap-3">
-                    <Button variant="outline" className="h-9 rounded-full border-black/10 text-black hover:bg-black/5 bg-transparent text-[13px] font-semibold">
+                    <Button
+                        variant="outline"
+                        onClick={() => toast("Export Started", {
+                            description: "Your CSV is generating and will download shortly.",
+                            icon: <FileDown className="h-5 w-5 text-[#BAFF4C]" />
+                        })}
+                        className="h-9 rounded-full border-black/10 text-black hover:bg-black/5 bg-transparent text-[13px] font-semibold"
+                    >
                         <FileDown className="mr-2 h-4 w-4" />
                         Export CSV
                     </Button>
@@ -146,7 +156,14 @@ export default function TransactionsPage() {
                     <span>Showing 1 to 8 of 24 entries</span>
                     <div className="flex items-center gap-2">
                         <Button variant="outline" size="sm" className="h-7 text-xs border-black/10" disabled>Previous</Button>
-                        <Button variant="outline" size="sm" className="h-7 text-xs border-black/10">Next</Button>
+                        <Button
+                            variant="outline"
+                            size="sm"
+                            onClick={() => toast("Fetching transactions", { description: "Loading the next page of results..." })}
+                            className="h-7 text-xs border-black/10"
+                        >
+                            Next
+                        </Button>
                     </div>
                 </div>
             </main>
