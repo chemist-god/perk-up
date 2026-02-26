@@ -29,6 +29,7 @@ import {
     SidebarGroup,
     SidebarGroupContent,
     SidebarGroupLabel,
+    useSidebar,
 } from "@/components/ui/sidebar"
 import { Logo } from "@/components/icons/logo"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
@@ -82,11 +83,12 @@ const data = {
 
 export function MainSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) {
     const pathname = usePathname()
+    const { setOpenMobile, isMobile } = useSidebar()
 
     return (
         <Sidebar className="border-r border-black/5 bg-[#F3F4ED]" {...props}>
             <SidebarHeader className="h-16 flex items-center px-6 border-b border-black/5">
-                <Link href="/" className="flex items-center gap-2 w-full mt-2">
+                <Link href="/" className="flex items-center gap-2 w-full mt-2" onClick={() => isMobile && setOpenMobile(false)}>
                     <Logo className="h-8 w-auto text-[#BAFF4C]" />
                     <span className="font-bold text-xl tracking-tight text-black">perk</span>
                 </Link>
@@ -111,7 +113,7 @@ export function MainSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
                                                 : 'text-black/70 hover:bg-black/5 hover:text-black font-medium'
                                                 }`}
                                         >
-                                            <Link href={item.url} className="flex items-center gap-3 px-3">
+                                            <Link href={item.url} className="flex items-center gap-3 px-3 w-full h-full" onClick={() => isMobile && setOpenMobile(false)}>
                                                 <item.icon className={`h-5 w-5 ${isActive ? 'text-black' : 'text-black/50'}`} />
                                                 <span className="text-[14px]">{item.title}</span>
                                             </Link>
@@ -136,7 +138,7 @@ export function MainSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
                                         tooltip={item.title}
                                         className="rounded-xl h-11 text-black/70 hover:bg-black/5 hover:text-black font-medium transition-all"
                                     >
-                                        <Link href={item.url} className="flex items-center gap-3 px-3">
+                                        <Link href={item.url} className="flex items-center gap-3 px-3 w-full h-full" onClick={() => isMobile && setOpenMobile(false)}>
                                             <item.icon className="h-5 w-5 text-black/50" />
                                             <span className="text-[14px]">{item.title}</span>
                                         </Link>
@@ -168,7 +170,7 @@ export function MainSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
                         <span className="text-[14px] font-semibold text-black truncate">{data.user.name}</span>
                         <span className="text-[12px] text-black/60 truncate">{data.user.email}</span>
                     </div>
-                    <Link href="/login" className="ml-auto text-black/50 hover:text-black transition-colors">
+                    <Link href="/login" className="ml-auto text-black/50 hover:text-black transition-colors" onClick={() => isMobile && setOpenMobile(false)}>
                         <LogOut className="h-5 w-5" />
                     </Link>
                 </div>
