@@ -47,38 +47,38 @@ const categories = [
 export default function DocsPage() {
     return (
         <div className="flex flex-col w-full min-h-screen bg-[#F3F4ED]">
-            <header className="flex h-16 shrink-0 items-center justify-between border-b border-black/5 px-4 sm:px-6 bg-[#F3F4ED] sticky top-0 z-20">
+            <header className="flex h-14 sm:h-16 shrink-0 items-center justify-between border-b border-black/5 px-4 sm:px-6 bg-[#F3F4ED] sticky top-0 z-20">
                 <div className="flex items-center gap-2">
                     <SidebarTrigger className="-ml-2 text-black/70 hover:text-black hover:bg-black/5" />
                     <Separator orientation="vertical" className="mr-2 h-4 bg-black/10" />
                     <Breadcrumb>
                         <BreadcrumbList>
                             <BreadcrumbItem>
-                                <BreadcrumbPage className="text-black font-semibold text-[14px]">Documentation Center</BreadcrumbPage>
+                                <BreadcrumbPage className="text-black font-semibold text-[13px] sm:text-[14px]">Documentation Center</BreadcrumbPage>
                             </BreadcrumbItem>
                         </BreadcrumbList>
                     </Breadcrumb>
                 </div>
             </header>
 
-            <main className="flex-1 p-4 sm:p-6 md:p-8 w-full max-w-7xl mx-auto space-y-10">
+            <main className="flex-1 p-4 sm:p-6 md:p-8 w-full max-w-7xl mx-auto space-y-8 sm:space-y-12">
 
                 {/* Hero Section */}
-                <div className="rounded-3xl border border-black shadow-lg bg-black text-white relative overflow-hidden py-16 px-6 sm:px-12">
-                    <div className="absolute top-[-50%] right-[-10%] w-[500px] h-[500px] bg-[#BAFF4C]/20 rounded-full blur-[120px] pointer-events-none" />
-                    <div className="absolute bottom-[-50%] left-[-10%] w-[300px] h-[300px] bg-blue-500/20 rounded-full blur-[100px] pointer-events-none" />
+                <div className="rounded-2xl sm:rounded-3xl border border-black shadow-lg bg-black text-white relative overflow-hidden py-10 px-5 sm:py-16 sm:px-12">
+                    <div className="absolute top-[-50%] right-[-10%] w-[300px] h-[300px] sm:w-[500px] sm:h-[500px] bg-[#BAFF4C]/20 rounded-full blur-[80px] sm:blur-[120px] pointer-events-none" />
+                    <div className="absolute bottom-[-50%] left-[-10%] w-[200px] h-[200px] sm:w-[300px] sm:h-[300px] bg-blue-500/20 rounded-full blur-[70px] sm:blur-[100px] pointer-events-none" />
 
                     <div className="relative z-10 max-w-3xl">
-                        <h1 className="text-3xl sm:text-5xl font-bold tracking-tight mb-4">How can we help?</h1>
-                        <p className="text-[16px] sm:text-lg text-white/70 mb-8 max-w-xl">
+                        <h1 className="text-2xl sm:text-4xl lg:text-5xl font-bold tracking-tight mb-3 sm:mb-4">How can we help?</h1>
+                        <p className="text-[14px] sm:text-[16px] lg:text-lg text-white/70 mb-6 sm:mb-8 max-w-xl leading-relaxed">
                             Search our comprehensive guides, API references, and tutorials to get the most out of your financial stack.
                         </p>
 
                         <div className="relative max-w-2xl group">
-                            <Search className="absolute left-5 top-1/2 -translate-y-1/2 h-6 w-6 text-black/40 group-focus-within:text-[#BAFF4C] transition-colors" />
+                            <Search className="absolute left-4 sm:left-5 top-1/2 -translate-y-1/2 h-5 w-5 sm:h-6 sm:w-6 text-black/40 group-focus-within:text-[#BAFF4C] transition-colors" />
                             <Input
                                 placeholder="Search articles, endpoints..."
-                                className="h-16 pl-14 pr-6 rounded-2xl bg-white text-black text-[16px] border-none focus-visible:ring-4 focus-visible:ring-[#BAFF4C]/50 transition-all font-medium placeholder:text-black/40 shadow-xl"
+                                className="h-12 sm:h-16 pl-12 sm:pl-14 pr-4 sm:pr-6 rounded-xl sm:rounded-2xl bg-white text-black text-[14px] sm:text-[16px] border-none focus-visible:ring-4 focus-visible:ring-[#BAFF4C]/50 transition-all font-medium placeholder:text-black/40 shadow-xl"
                             />
                         </div>
                     </div>
@@ -86,22 +86,22 @@ export default function DocsPage() {
 
                 {/* Categories Grid */}
                 <div>
-                    <div className="mb-6 flex items-center justify-between">
-                        <h2 className="text-2xl font-bold text-black tracking-tight">Browse Categories</h2>
+                    <div className="mb-5 sm:mb-6 flex items-center justify-between">
+                        <h2 className="text-[20px] sm:text-2xl font-bold text-black tracking-tight">Browse Categories</h2>
                     </div>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 sm:gap-6">
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-5 lg:gap-6">
                         {categories.map((category) => (
                             <Link key={category.title} href="#" className="group block h-full">
-                                <div className="bg-white border border-black/5 rounded-3xl p-6 sm:p-8 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-full flex flex-col cursor-pointer hover:border-black/10">
-                                    <div className={`h-12 w-12 rounded-2xl flex items-center justify-center mb-6 shadow-sm ${category.color}`}>
-                                        <category.icon className="h-6 w-6" />
+                                <div className="bg-white border border-black/5 rounded-2xl sm:rounded-3xl p-5 sm:p-7 shadow-sm hover:shadow-md transition-all duration-300 hover:-translate-y-1 h-full flex flex-col cursor-pointer hover:border-black/10">
+                                    <div className={`h-10 w-10 sm:h-12 sm:w-12 rounded-xl sm:rounded-2xl flex items-center justify-center mb-4 sm:mb-6 shadow-sm ${category.color}`}>
+                                        <category.icon className="h-5 w-5 sm:h-6 sm:w-6" />
                                     </div>
-                                    <h3 className="text-[18px] font-bold text-black mb-2 flex items-center justify-between">
+                                    <h3 className="text-[16px] sm:text-[18px] font-bold text-black mb-2 flex items-center justify-between">
                                         {category.title}
                                         <ArrowRight className="h-4 w-4 text-black/20 group-hover:text-black/80 group-hover:translate-x-1 transition-all" />
                                     </h3>
-                                    <p className="text-[14px] text-black/60 leading-relaxed block flex-1">
+                                    <p className="text-[13px] sm:text-[14px] text-black/60 leading-relaxed block flex-1">
                                         {category.description}
                                     </p>
                                 </div>
@@ -111,36 +111,36 @@ export default function DocsPage() {
                 </div>
 
                 {/* Popular Articles & FAQ */}
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 sm:gap-8">
                     <div className="lg:col-span-2">
-                        <h2 className="text-2xl font-bold text-black tracking-tight mb-6">Frequently Asked Questions</h2>
-                        <div className="bg-white border border-black/5 rounded-3xl overflow-hidden shadow-sm">
-                            <div className="divide-y divide-black/5 px-6 sm:px-8">
-                                <details className="group py-6 cursor-pointer">
-                                    <summary className="font-semibold text-[16px] outline-none list-none flex items-center justify-between text-black hover:text-[#BAFF4C] transition-colors">
+                        <h2 className="text-[20px] sm:text-2xl font-bold text-black tracking-tight mb-5 sm:mb-6">Frequently Asked Questions</h2>
+                        <div className="bg-white border border-black/5 rounded-2xl sm:rounded-3xl overflow-hidden shadow-sm">
+                            <div className="divide-y divide-black/5 px-5 sm:px-8">
+                                <details className="group py-4 sm:py-6 cursor-pointer">
+                                    <summary className="font-semibold text-[15px] sm:text-[16px] outline-none list-none flex items-center justify-between text-black hover:text-[#BAFF4C] transition-colors">
                                         How long does KYB verification take?
                                         <span className="transition group-open:rotate-45 block text-2xl font-light leading-none text-black/40">+</span>
                                     </summary>
-                                    <div className="pt-4 pb-1">
-                                        <p className="text-[15px] text-black/60 leading-relaxed">Most verifications are processed within 24 hours of document submission. If further information is required regarding corporate structure or directors, our compliance team will email you directly.</p>
+                                    <div className="pt-3 sm:pt-4 pb-1">
+                                        <p className="text-[14px] sm:text-[15px] text-black/60 leading-relaxed">Most verifications are processed within 24 hours of document submission. If further information is required regarding corporate structure or directors, our compliance team will email you directly.</p>
                                     </div>
                                 </details>
-                                <details className="group py-6 cursor-pointer">
-                                    <summary className="font-semibold text-[16px] outline-none list-none flex items-center justify-between text-black hover:text-[#BAFF4C] transition-colors">
+                                <details className="group py-4 sm:py-6 cursor-pointer">
+                                    <summary className="font-semibold text-[15px] sm:text-[16px] outline-none list-none flex items-center justify-between text-black hover:text-[#BAFF4C] transition-colors">
                                         Can I issue cards with foreign addresses?
                                         <span className="transition group-open:rotate-45 block text-2xl font-light leading-none text-black/40">+</span>
                                     </summary>
-                                    <div className="pt-4 pb-1">
-                                        <p className="text-[15px] text-black/60 leading-relaxed">Currently, physical cards can only be mailed to verified business or employee addresses within the United States. However, virtual cards can be issued instantly for remote or international employees.</p>
+                                    <div className="pt-3 sm:pt-4 pb-1">
+                                        <p className="text-[14px] sm:text-[15px] text-black/60 leading-relaxed">Currently, physical cards can only be mailed to verified business or employee addresses within the United States. However, virtual cards can be issued instantly for remote or international employees.</p>
                                     </div>
                                 </details>
-                                <details className="group py-6 cursor-pointer">
-                                    <summary className="font-semibold text-[16px] outline-none list-none flex items-center justify-between text-black hover:text-[#BAFF4C] transition-colors">
+                                <details className="group py-4 sm:py-6 cursor-pointer">
+                                    <summary className="font-semibold text-[15px] sm:text-[16px] outline-none list-none flex items-center justify-between text-black hover:text-[#BAFF4C] transition-colors">
                                         What happens when my Wallet balance is low?
                                         <span className="transition group-open:rotate-45 block text-2xl font-light leading-none text-black/40">+</span>
                                     </summary>
-                                    <div className="pt-4 pb-1">
-                                        <p className="text-[15px] text-black/60 leading-relaxed">If Auto-Reload is enabled, your connected Funding Source will automatically trigger an ACH transfer when your balance drops below your chosen threshold. Otherwise, cards will decline transactions until funds are added.</p>
+                                    <div className="pt-3 sm:pt-4 pb-1">
+                                        <p className="text-[14px] sm:text-[15px] text-black/60 leading-relaxed">If Auto-Reload is enabled, your connected Funding Source will automatically trigger an ACH transfer when your balance drops below your chosen threshold. Otherwise, cards will decline transactions until funds are added.</p>
                                     </div>
                                 </details>
                             </div>
@@ -148,13 +148,13 @@ export default function DocsPage() {
                     </div>
 
                     <div className="lg:col-span-1">
-                        <div className="bg-[#BAFF4C]/10 border border-[#BAFF4C]/30 rounded-3xl p-6 sm:p-8">
-                            <h3 className="text-lg font-bold text-black mb-2">Still stranded?</h3>
-                            <p className="text-[14px] text-black/70 mb-6 leading-relaxed">Our enterprise support team is available 24/7. We typically respond in under 5 minutes.</p>
-                            <button className="w-full bg-black text-white hover:bg-black/80 font-semibold py-3.5 rounded-xl shadow-sm transition-colors text-[14px]">
+                        <div className="bg-[#BAFF4C]/10 border border-[#BAFF4C]/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
+                            <h3 className="text-[16px] sm:text-lg font-bold text-black mb-1.5 sm:mb-2">Still stranded?</h3>
+                            <p className="text-[13px] sm:text-[14px] text-black/70 mb-5 sm:mb-6 leading-relaxed">Our enterprise support team is available 24/7. We typically respond in under 5 minutes.</p>
+                            <button className="w-full bg-black text-white hover:bg-black/80 font-semibold py-3 sm:py-3.5 rounded-xl shadow-sm transition-colors text-[13px] sm:text-[14px]">
                                 Contact Support
                             </button>
-                            <button className="w-full bg-transparent border border-black/10 text-black hover:bg-black/5 font-semibold py-3.5 rounded-xl transition-colors text-[14px] mt-3">
+                            <button className="w-full bg-transparent border border-black/10 text-black hover:bg-black/5 font-semibold py-3 sm:py-3.5 rounded-xl transition-colors text-[13px] sm:text-[14px] mt-2.5 sm:mt-3">
                                 View System Status
                             </button>
                         </div>
