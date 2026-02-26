@@ -220,15 +220,16 @@ export default function SettingsPage() {
 
                                         <Separator className="bg-black/5 my-6" />
 
-                                        <div className="flex flex-col sm:flex-row justify-between sm:items-center gap-4 p-5 border border-black/10 rounded-2xl bg-[#BAFF4C]/5 relative overflow-hidden">
+                                        <div className="flex flex-col justify-between items-start sm:flex-row sm:items-center gap-5 p-5 border border-black/10 rounded-2xl bg-[#BAFF4C]/5 relative overflow-hidden">
                                             <div className="absolute inset-0 bg-gradient-to-r from-transparent to-[#BAFF4C]/10" />
-                                            <div className="relative z-10">
-                                                <h4 className="font-bold text-[15px] flex items-center gap-2">
-                                                    Two-Factor Authentication (2FA) <span className="bg-red-100 text-red-700 text-[10px] uppercase px-2 py-0.5 rounded-full font-bold">Disabled</span>
-                                                </h4>
-                                                <p className="text-[13px] text-black/60 mt-1 max-w-sm">Protect your account with an extra layer of security requiring a code from your mobile device.</p>
+                                            <div className="relative z-10 flex-1">
+                                                <div className="flex flex-wrap items-center gap-2 mb-1.5 ">
+                                                    <h4 className="font-bold text-[15px] leading-tight">Two-Factor Authentication (2FA)</h4>
+                                                    <span className="bg-red-100 text-red-700 text-[10px] uppercase px-2 py-0.5 rounded-full font-bold whitespace-nowrap">Disabled</span>
+                                                </div>
+                                                <p className="text-[13px] text-black/60 max-w-sm leading-relaxed">Protect your account with an extra layer of security requiring a code from your mobile device.</p>
                                             </div>
-                                            <Button variant="outline" className="relative z-10 shrink-0 border-[#BAFF4C]/50 hover:bg-[#BAFF4C]/20 text-black font-semibold rounded-full bg-white/50">
+                                            <Button variant="outline" className="relative z-10 w-full sm:w-auto shrink-0 border-black/10 hover:border-black/20 hover:bg-black/5 text-black font-semibold rounded-xl bg-white h-11 sm:h-auto">
                                                 Enable 2FA
                                             </Button>
                                         </div>
@@ -242,29 +243,30 @@ export default function SettingsPage() {
                                     <CardContent className="p-0">
                                         <div className="divide-y divide-black/5">
                                             <div className="flex items-center justify-between p-6">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="h-10 w-10 rounded-full bg-[#BAFF4C]/20 flex items-center justify-center text-green-700 shrink-0">
+                                                <div className="flex items-start sm:items-center gap-4">
+                                                    <div className="h-10 w-10 rounded-full bg-[#BAFF4C]/20 flex items-center justify-center text-green-700 shrink-0 mt-1 sm:mt-0">
                                                         <Laptop className="h-5 w-5" />
                                                     </div>
-                                                    <div className="flex flex-col gap-1">
-                                                        <span className="text-[14px] font-bold text-black flex items-center gap-2">
-                                                            Mac OS • Chrome <span className="text-[10px] text-green-700 font-bold uppercase bg-green-100 px-2 py-0.5 rounded-full">Current Session</span>
-                                                        </span>
-                                                        <span className="text-[13px] text-black/50">San Francisco, CA • Active Now</span>
+                                                    <div className="flex flex-col gap-1.5 sm:gap-1">
+                                                        <div className="flex flex-wrap items-center gap-2">
+                                                            <span className="text-[14px] font-bold text-black leading-tight">Mac OS • Chrome</span>
+                                                            <span className="text-[9px] text-green-700 font-bold uppercase bg-green-100 px-2 py-0.5 rounded-full whitespace-nowrap">Current Session</span>
+                                                        </div>
+                                                        <span className="text-[13px] text-black/50 leading-tight">San Francisco, CA • Active Now</span>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <div className="flex items-center justify-between p-6 hover:bg-black/[0.02] transition-colors">
-                                                <div className="flex items-center gap-4">
-                                                    <div className="h-10 w-10 rounded-full bg-black/5 flex items-center justify-center text-black/50 shrink-0">
+                                            <div className="flex items-start sm:items-center justify-between gap-4 p-6 hover:bg-black/[0.02] transition-colors">
+                                                <div className="flex items-start sm:items-center gap-4">
+                                                    <div className="h-10 w-10 rounded-full bg-black/5 flex items-center justify-center text-black/50 shrink-0 mt-1 sm:mt-0">
                                                         <Smartphone className="h-5 w-5" />
                                                     </div>
-                                                    <div className="flex flex-col gap-1">
-                                                        <span className="text-[14px] font-semibold text-black">iPhone 14 Pro • iOS App</span>
-                                                        <span className="text-[13px] text-black/50">San Francisco, CA • Last active 2h ago</span>
+                                                    <div className="flex flex-col gap-1.5 sm:gap-1">
+                                                        <span className="text-[14px] font-semibold text-black leading-tight">iPhone 14 Pro • iOS App</span>
+                                                        <span className="text-[13px] text-black/50 leading-tight">San Francisco, CA • Last active 2h ago</span>
                                                     </div>
                                                 </div>
-                                                <Button variant="ghost" className="text-red-600 hover:text-red-700 hover:bg-red-50 text-[13px] font-semibold h-8 rounded-full px-4">
+                                                <Button variant="ghost" className="text-red-600 hover:text-red-700 hover:bg-red-50 text-[13px] font-semibold h-8 rounded-full px-4 -mr-2 sm:mr-0 shrink-0">
                                                     Revoke
                                                 </Button>
                                             </div>
