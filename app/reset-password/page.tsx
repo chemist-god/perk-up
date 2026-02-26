@@ -1,9 +1,12 @@
+"use client"
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/icons/logo";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
 
 export default function ResetPasswordPage() {
     return (
@@ -26,7 +29,7 @@ export default function ResetPasswordPage() {
 
                     <div className="mt-10">
                         <div>
-                            <form action="#" method="POST" className="space-y-5">
+                            <form onSubmit={(e) => { e.preventDefault(); toast.success("Password Updated", { description: "Your new password has been set successfully." }) }} className="space-y-5">
                                 <div className="space-y-2">
                                     <Label htmlFor="password">Password</Label>
                                     <Input id="password" name="password" type="password" autoComplete="new-password" required className="h-11 shadow-sm" />
