@@ -1,8 +1,11 @@
+"use client"
+
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Plus, Receipt, Search, Filter, CheckCircle2, XCircle, Clock, FileText } from "lucide-react"
+import { toast } from "sonner"
 import { Card, CardContent } from "@/components/ui/card"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import { Input } from "@/components/ui/input"
@@ -38,7 +41,10 @@ export default function ReimbursementsPage() {
                     </Breadcrumb>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
-                    <Button className="h-9 rounded-full bg-black text-white hover:bg-black/80 font-semibold flex items-center shadow-sm text-[13px] px-3 sm:px-4">
+                    <Button
+                        onClick={() => toast("Drafting Request", { description: "Opening the reimbursement request form..." })}
+                        className="h-9 rounded-full bg-black text-white hover:bg-black/80 font-semibold flex items-center shadow-sm text-[13px] px-3 sm:px-4"
+                    >
                         <Plus className="sm:mr-2 h-4 w-4" /> <span className="hidden sm:inline">New Request</span>
                     </Button>
                 </div>
@@ -144,10 +150,20 @@ export default function ReimbursementsPage() {
                                             {/* Action Buttons for Pending */}
                                             {req.status === 'pending' && (
                                                 <div className="flex items-center gap-2 mt-4 pt-4 border-t border-black/5 relative z-10">
-                                                    <Button className="flex-1 sm:flex-none h-9 rounded-lg bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold text-[13px]">
+                                                    <Button
+                                                        onClick={() => toast.success("Request Approved", {
+                                                            description: `${req.amount} has been approved for ${req.user}.`,
+                                                            icon: <CheckCircle2 className="h-5 w-5 text-[#BAFF4C]" />
+                                                        })}
+                                                        className="flex-1 sm:flex-none h-9 rounded-lg bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold text-[13px]"
+                                                    >
                                                         Approve
                                                     </Button>
-                                                    <Button variant="outline" className="flex-1 sm:flex-none h-9 rounded-lg border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 font-semibold text-[13px] bg-red-50/50">
+                                                    <Button
+                                                        variant="outline"
+                                                        onClick={() => toast("Request Rejected", { description: "The employee will be notified via email." })}
+                                                        className="flex-1 sm:flex-none h-9 rounded-lg border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 font-semibold text-[13px] bg-red-50/50"
+                                                    >
                                                         Reject
                                                     </Button>
                                                 </div>
@@ -195,7 +211,11 @@ export default function ReimbursementsPage() {
                                                 <p>Payouts are processed on the <strong>15th</strong> and <strong>last day</strong> of month.</p>
                                             </div>
                                         </div>
-                                        <Button variant="link" className="px-0 mt-2 text-black/50 hover:text-black">
+                                        <Button
+                                            variant="link"
+                                            onClick={() => toast("Loading Policy", { description: "Opening corporate reimbursement guidelines..." })}
+                                            className="px-0 mt-2 text-black/50 hover:text-black"
+                                        >
                                             Read full policy →
                                         </Button>
                                     </CardContent>
