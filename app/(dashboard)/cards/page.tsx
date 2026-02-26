@@ -1,8 +1,11 @@
+"use client"
+
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
-import { Plus, CreditCard, Lock, Eye, AlertCircle, Settings, Snowflake } from "lucide-react"
+import { Plus, CreditCard, Lock, Eye, AlertCircle, Settings, Snowflake, Unlock } from "lucide-react"
+import { toast } from "sonner"
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
 import { Progress } from "@/components/ui/progress"
 import {
@@ -105,10 +108,19 @@ export default function CardsPage() {
                                             <Progress value={84.5} className="h-2 bg-black/5 [&>div]:bg-black" />
                                         </div>
                                         <div className="flex gap-2">
-                                            <Button variant="outline" className="flex-1 h-9 rounded-lg border-black/10 text-black hover:bg-black/5 font-semibold text-[13px]">
+                                            <Button
+                                                variant="outline"
+                                                onClick={() => toast("Verification Required", { description: "Please enter your password or use Touch ID to reveal card numbers." })}
+                                                className="flex-1 h-9 rounded-lg border-black/10 text-black hover:bg-black/5 font-semibold text-[13px]"
+                                            >
                                                 <Eye className="mr-2 h-4 w-4 text-black/50" /> Reveal Details
                                             </Button>
-                                            <Button variant="outline" size="icon" className="h-9 w-9 rounded-lg border-black/10 text-black hover:bg-black/5">
+                                            <Button
+                                                variant="outline"
+                                                size="icon"
+                                                onClick={() => toast("Card Settings", { description: "Opening configuration drawer..." })}
+                                                className="h-9 w-9 rounded-lg border-black/10 text-black hover:bg-black/5"
+                                            >
                                                 <Settings className="h-4 w-4 text-black/50" />
                                             </Button>
                                         </div>
@@ -167,10 +179,19 @@ export default function CardsPage() {
                                             <Progress value={6.2} className="h-2 bg-black/5 [&>div]:bg-[#BAFF4C]" />
                                         </div>
                                         <div className="flex gap-2">
-                                            <Button variant="outline" className="flex-1 h-9 rounded-lg border-black/10 text-black hover:bg-black/5 font-semibold text-[13px]">
+                                            <Button
+                                                variant="outline"
+                                                onClick={() => toast("Verification Required", { description: "Please enter your password or use Touch ID to reveal card numbers." })}
+                                                className="flex-1 h-9 rounded-lg border-black/10 text-black hover:bg-black/5 font-semibold text-[13px]"
+                                            >
                                                 <Eye className="mr-2 h-4 w-4 text-black/50" /> Reveal Details
                                             </Button>
-                                            <Button variant="outline" size="icon" className="h-9 w-9 rounded-lg border-black/10 text-black hover:bg-black/5">
+                                            <Button
+                                                variant="outline"
+                                                size="icon"
+                                                onClick={() => toast("Card Settings", { description: "Opening configuration drawer..." })}
+                                                className="h-9 w-9 rounded-lg border-black/10 text-black hover:bg-black/5"
+                                            >
                                                 <Settings className="h-4 w-4 text-black/50" />
                                             </Button>
                                         </div>
@@ -225,7 +246,14 @@ export default function CardsPage() {
                                             <Progress value={0} className="h-2 bg-black/5" />
                                         </div>
                                         <div className="flex gap-2">
-                                            <Button variant="outline" className="flex-1 h-9 rounded-lg border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 font-semibold text-[13px] bg-red-50/50">
+                                            <Button
+                                                variant="outline"
+                                                onClick={() => toast.success("Card Unlocked", {
+                                                    description: "This virtual card is now active and ready for transactions.",
+                                                    icon: <Unlock className="h-5 w-5 text-[#BAFF4C]" />
+                                                })}
+                                                className="flex-1 h-9 rounded-lg border-red-200 text-red-600 hover:bg-red-50 hover:text-red-700 font-semibold text-[13px] bg-red-50/50"
+                                            >
                                                 Unlock Card
                                             </Button>
                                         </div>
@@ -247,7 +275,13 @@ export default function CardsPage() {
                             <p className="text-black/60 text-[14px] sm:text-[15px] max-w-md mb-8 leading-relaxed">
                                 You currently don't have any active physical corporate cards assigned to you. Request one below to start spending in-person.
                             </p>
-                            <Button className="h-11 rounded-full bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold shadow-sm text-[14px] px-8 transition-transform hover:scale-[1.02]">
+                            <Button
+                                onClick={() => toast("Request Submitted", {
+                                    description: "Your physical card is being printed and will arrive in 3-5 business days.",
+                                    icon: <CreditCard className="h-5 w-5 text-[#BAFF4C]" />
+                                })}
+                                className="h-11 rounded-full bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold shadow-sm text-[14px] px-8 transition-transform hover:scale-[1.02]"
+                            >
                                 Request Physical Card
                             </Button>
                         </div>
