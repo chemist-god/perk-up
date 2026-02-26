@@ -1,9 +1,12 @@
+"use client"
+
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb"
 import { Input } from "@/components/ui/input"
-import { Search, BookOpen, CreditCard, Receipt, Settings2, ShieldCheck, Zap, ArrowRight } from "lucide-react"
+import { Search, BookOpen, CreditCard, Receipt, Settings2, ShieldCheck, Zap, ArrowRight, CheckCircle2 } from "lucide-react"
 import Link from "next/link"
+import { toast } from "sonner"
 
 const categories = [
     {
@@ -151,10 +154,22 @@ export default function DocsPage() {
                         <div className="bg-[#BAFF4C]/10 border border-[#BAFF4C]/30 rounded-2xl sm:rounded-3xl p-5 sm:p-8">
                             <h3 className="text-[16px] sm:text-lg font-bold text-black mb-1.5 sm:mb-2">Still stranded?</h3>
                             <p className="text-[13px] sm:text-[14px] text-black/70 mb-5 sm:mb-6 leading-relaxed">Our enterprise support team is available 24/7. We typically respond in under 5 minutes.</p>
-                            <button className="w-full bg-black text-white hover:bg-black/80 font-semibold py-3 sm:py-3.5 rounded-xl shadow-sm transition-colors text-[13px] sm:text-[14px]">
+                            <button
+                                onClick={() => toast("Support ticket created", {
+                                    description: "Our team will reach out to ana@techflow.com shortly.",
+                                    action: { label: "Undo", onClick: () => console.log("Undo") }
+                                })}
+                                className="w-full bg-black text-white hover:bg-black/80 font-semibold py-3 sm:py-3.5 rounded-xl shadow-sm transition-colors text-[13px] sm:text-[14px]"
+                            >
                                 Contact Support
                             </button>
-                            <button className="w-full bg-transparent border border-black/10 text-black hover:bg-black/5 font-semibold py-3 sm:py-3.5 rounded-xl transition-colors text-[13px] sm:text-[14px] mt-2.5 sm:mt-3">
+                            <button
+                                onClick={() => toast.success("All systems operational", {
+                                    description: "API, Issuing, and Dashboard are running normally.",
+                                    icon: <CheckCircle2 className="h-5 w-5 text-[#BAFF4C]" />
+                                })}
+                                className="w-full bg-transparent border border-black/10 text-black hover:bg-black/5 font-semibold py-3 sm:py-3.5 rounded-xl transition-colors text-[13px] sm:text-[14px] mt-2.5 sm:mt-3"
+                            >
                                 View System Status
                             </button>
                         </div>
