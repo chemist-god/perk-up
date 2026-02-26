@@ -150,15 +150,17 @@ export function MainSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
                 </SidebarGroup>
             </SidebarContent>
 
-            <div className="mt-auto p-4 mx-3 mb-4 bg-black/5 rounded-2xl">
+            <Link href="/docs" className="mt-auto p-4 mx-3 mb-4 bg-black/5 hover:bg-black-[0.08] transition-colors rounded-2xl block" onClick={() => isMobile && setOpenMobile(false)}>
                 <div className="flex items-center gap-3">
-                    <LifeBuoy className="h-5 w-5 text-black/60" />
+                    <div className="h-8 w-8 rounded-full bg-[#BAFF4C]/20 flex flex-col items-center justify-center">
+                        <LifeBuoy className="h-4 w-4 text-green-700" />
+                    </div>
                     <div>
                         <p className="text-[13px] font-semibold text-black">Need help?</p>
-                        <p className="text-[12px] text-black/60">Check our docs</p>
+                        <p className="text-[12px] text-black/60 group-hover:text-black/80 transition-colors">Check our docs</p>
                     </div>
                 </div>
-            </div>
+            </Link>
 
             <SidebarFooter className="border-t border-black/5 p-4 bg-[#F3F4ED]">
                 <div className="flex items-center gap-3">
