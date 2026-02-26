@@ -1,3 +1,5 @@
+"use client"
+
 import { SidebarTrigger } from "@/components/ui/sidebar"
 import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb"
@@ -6,7 +8,8 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { Building2, Save, Upload, CreditCard, ShieldCheck, Download, Plus, Receipt } from "lucide-react"
+import { Building2, Save, Upload, CreditCard, ShieldCheck, Download, Plus, Receipt, CheckCircle2 } from "lucide-react"
+import { toast } from "sonner"
 
 export default function CompanyProfilePage() {
     return (
@@ -24,7 +27,13 @@ export default function CompanyProfilePage() {
                     </Breadcrumb>
                 </div>
                 <div className="flex items-center gap-2 sm:gap-3">
-                    <Button className="h-9 rounded-full bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold flex items-center shadow-sm text-[13px] px-4">
+                    <Button
+                        onClick={() => toast.success("Changes Saved", {
+                            description: "Company profile details have been successfully updated.",
+                            icon: <CheckCircle2 className="h-5 w-5 text-[#BAFF4C]" />
+                        })}
+                        className="h-9 rounded-full bg-[#BAFF4C] text-black hover:bg-[#a3e63d] font-semibold flex items-center shadow-sm text-[13px] px-4"
+                    >
                         <Save className="mr-2 h-4 w-4" /> Save Changes
                     </Button>
                 </div>
@@ -85,8 +94,22 @@ export default function CompanyProfilePage() {
                                                 <h4 className="text-[14px] font-semibold text-black">Company Logo</h4>
                                                 <p className="text-[13px] text-black/50 mb-2">Recommended size: 400x400px. Max 2MB.</p>
                                                 <div className="flex gap-2">
-                                                    <Button variant="outline" size="sm" className="h-8 text-xs font-semibold rounded-lg">Upload New</Button>
-                                                    <Button variant="ghost" size="sm" className="h-8 text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg">Remove</Button>
+                                                    <Button
+                                                        variant="outline"
+                                                        size="sm"
+                                                        onClick={() => toast("Upload Started", { description: "Processing your new company logo..." })}
+                                                        className="h-8 text-xs font-semibold rounded-lg"
+                                                    >
+                                                        Upload New
+                                                    </Button>
+                                                    <Button
+                                                        variant="ghost"
+                                                        size="sm"
+                                                        onClick={() => toast("Logo Removed", { description: "Reverted to the default company initials." })}
+                                                        className="h-8 text-xs font-semibold text-red-600 hover:text-red-700 hover:bg-red-50 rounded-lg"
+                                                    >
+                                                        Remove
+                                                    </Button>
                                                 </div>
                                             </div>
                                         </div>
@@ -171,7 +194,11 @@ export default function CompanyProfilePage() {
                                             </Button>
                                         </div>
 
-                                        <Button variant="outline" className="w-full rounded-xl border-dashed border-black/20 text-black/60 hover:text-black hover:bg-black/5 hover:border-black/30 bg-transparent h-12 font-semibold">
+                                        <Button
+                                            variant="outline"
+                                            onClick={() => toast("Feature Restricted", { description: "Please contact support to add additional payment methods." })}
+                                            className="w-full rounded-xl border-dashed border-black/20 text-black/60 hover:text-black hover:bg-black/5 hover:border-black/30 bg-transparent h-12 font-semibold"
+                                        >
                                             <Plus className="mr-2 h-4 w-4" /> Add Payment Method
                                         </Button>
                                     </CardContent>
@@ -201,7 +228,12 @@ export default function CompanyProfilePage() {
                                                     </div>
                                                     <div className="flex items-center gap-4">
                                                         <span className="text-[14px] font-bold text-black hidden sm:inline-block">{inv.amount}</span>
-                                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-black/50 hover:text-black">
+                                                        <Button
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            onClick={() => toast("Downloading Invoice", { description: `${inv.inv} is being saved to your device.` })}
+                                                            className="h-8 w-8 text-black/50 hover:text-black"
+                                                        >
                                                             <Download className="h-4 w-4" />
                                                         </Button>
                                                     </div>
@@ -241,7 +273,13 @@ export default function CompanyProfilePage() {
                                                         <span className="text-[12px] text-black/50">Uploaded Oct 12, 2025</span>
                                                     </div>
                                                 </div>
-                                                <Button variant="ghost" className="text-[13px] font-medium text-black">View</Button>
+                                                <Button
+                                                    variant="ghost"
+                                                    onClick={() => toast("Opening Document", { description: "Decrypting KYB payload..." })}
+                                                    className="text-[13px] font-medium text-black"
+                                                >
+                                                    View
+                                                </Button>
                                             </div>
 
                                             <div className="bg-black/5 border border-black/5 rounded-2xl p-4 flex items-center justify-between">
@@ -254,7 +292,13 @@ export default function CompanyProfilePage() {
                                                         <span className="text-[12px] text-black/50">Uploaded Oct 12, 2025</span>
                                                     </div>
                                                 </div>
-                                                <Button variant="ghost" className="text-[13px] font-medium text-black">View</Button>
+                                                <Button
+                                                    variant="ghost"
+                                                    onClick={() => toast("Opening Document", { description: "Decrypting KYB payload..." })}
+                                                    className="text-[13px] font-medium text-black"
+                                                >
+                                                    View
+                                                </Button>
                                             </div>
                                         </div>
                                     </CardContent>
