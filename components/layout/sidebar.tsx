@@ -14,7 +14,20 @@ import {
     Wallet,
     LogOut,
     Building2,
+    ChevronsUpDown,
+    UserCircle,
+    BadgeCheck
 } from "lucide-react"
+
+import {
+    DropdownMenu,
+    DropdownMenuContent,
+    DropdownMenuGroup,
+    DropdownMenuItem,
+    DropdownMenuLabel,
+    DropdownMenuSeparator,
+    DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
 
 import {
     Sidebar,
@@ -163,19 +176,71 @@ export function MainSidebar({ ...props }: React.ComponentProps<typeof Sidebar>) 
             </Link>
 
             <SidebarFooter className="border-t border-black/5 p-4 bg-[#F3F4ED]">
-                <div className="flex items-center gap-3">
-                    <Avatar className="h-10 w-10 border-2 border-[#BAFF4C]">
-                        <AvatarImage src={data.user.avatar} alt={data.user.name} className="object-cover" />
-                        <AvatarFallback className="bg-black/5 text-black font-semibold">AT</AvatarFallback>
-                    </Avatar>
-                    <div className="flex flex-col overflow-hidden">
-                        <span className="text-[14px] font-semibold text-black truncate">{data.user.name}</span>
-                        <span className="text-[12px] text-black/60 truncate">{data.user.email}</span>
-                    </div>
-                    <Link href="/login" className="ml-auto text-black/50 hover:text-black transition-colors" onClick={() => isMobile && setOpenMobile(false)}>
-                        <LogOut className="h-5 w-5" />
-                    </Link>
-                </div>
+                <SidebarMenu>
+                    <SidebarMenuItem>
+                        <DropdownMenu>
+                            <DropdownMenuTrigger asChild>
+                                <SidebarMenuButton
+                                    size="lg"
+                                    className="data-[state=open]:bg-sidebar-accent data-[state=open]:text-sidebar-accent-foreground rounded-xl hover:bg-black/5 transition-colors"
+                                >
+                                    <Avatar className="h-10 w-10 border-2 border-[#BAFF4C]">
+                                        <AvatarImage src={data.user.avatar} alt={data.user.name} className="object-cover" />
+                                        <AvatarFallback className="bg-black/5 text-black font-semibold">AT</AvatarFallback>
+                                    </Avatar>
+                                    <div className="flex flex-col overflow-hidden leading-tight gap-0.5 ml-1">
+                                        <span className="text-[14px] font-semibold text-black truncate">{data.user.name}</span>
+                                        <span className="text-[12px] text-black/60 truncate">{data.user.email}</span>
+                                    </div>
+                                    <ChevronsUpDown className="ml-auto h-4 w-4 text-black/50" />
+                                </SidebarMenuButton>
+                            </DropdownMenuTrigger>
+                            <DropdownMenuContent
+                                className="w-[--radix-dropdown-menu-trigger-width] min-w-56 rounded-2xl bg-white border-black/10 shadow-lg"
+                                side={isMobile ? "bottom" : "right"}
+                                align="end"
+                                sideOffset={4}
+                            >
+                                <DropdownMenuLabel className="p-0 font-normal">
+                                    <div className="flex items-center gap-3 px-3 py-3">
+                                        <Avatar className="h-9 w-9 border-2 border-[#BAFF4C]">
+                                            <AvatarImage src={data.user.avatar} alt={data.user.name} />
+                                            <AvatarFallback className="bg-black/5 text-black font-semibold">AT</AvatarFallback>
+                                        </Avatar>
+                                        <div className="flex flex-col leading-tight gap-0.5">
+                                            <span className="text-[14px] font-semibold text-black truncate">{data.user.name}</span>
+                                            <span className="text-[12px] text-black/60 truncate">{data.user.email}</span>
+                                        </div>
+                                    </div>
+                                </DropdownMenuLabel>
+                                <DropdownMenuSeparator className="bg-black/5" />
+                                <DropdownMenuGroup className="p-1">
+                                    <Link href="/settings" onClick={() => isMobile && setOpenMobile(false)}>
+                                        <DropdownMenuItem className="cursor-pointer rounded-xl h-10 hover:bg-black/5 focus:bg-black/5 text-black">
+                                            <UserCircle className="mr-2 h-4 w-4" />
+                                            <span>Account Settings</span>
+                                        </DropdownMenuItem>
+                                    </Link>
+                                    <Link href="/settings/company" onClick={() => isMobile && setOpenMobile(false)}>
+                                        <DropdownMenuItem className="cursor-pointer rounded-xl h-10 hover:bg-black/5 focus:bg-black/5 text-black">
+                                            <BadgeCheck className="mr-2 h-4 w-4" />
+                                            <span>Company Profile</span>
+                                        </DropdownMenuItem>
+                                    </Link>
+                                </DropdownMenuGroup>
+                                <DropdownMenuSeparator className="bg-black/5" />
+                                <div className="p-1">
+                                    <Link href="/login" onClick={() => isMobile && setOpenMobile(false)}>
+                                        <DropdownMenuItem className="cursor-pointer rounded-xl h-10 hover:bg-red-50 focus:bg-red-50 text-red-600 focus:text-red-700">
+                                            <LogOut className="mr-2 h-4 w-4" />
+                                            <span>Sign out</span>
+                                        </DropdownMenuItem>
+                                    </Link>
+                                </div>
+                            </DropdownMenuContent>
+                        </DropdownMenu>
+                    </SidebarMenuItem>
+                </SidebarMenu>
             </SidebarFooter>
             <SidebarRail />
         </Sidebar>
