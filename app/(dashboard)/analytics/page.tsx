@@ -5,6 +5,7 @@ import { Separator } from "@/components/ui/separator"
 import { Breadcrumb, BreadcrumbItem, BreadcrumbList, BreadcrumbPage } from "@/components/ui/breadcrumb"
 import { Button } from "@/components/ui/button"
 import { Calendar, Download, TrendingUp, TrendingDown, ArrowUpRight, BarChart3, PieChart as PieChartIcon, Activity } from "lucide-react"
+import { toast } from "sonner"
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
 import { Area, AreaChart, CartesianGrid, XAxis, YAxis, ResponsiveContainer, Tooltip, PieChart, Pie, Cell } from "recharts"
 
@@ -45,7 +46,10 @@ export default function AnalyticsPage() {
                         <Calendar className="mr-2 h-4 w-4" />
                         Last 30 Days
                     </Button>
-                    <Button className="h-9 rounded-full bg-black text-white hover:bg-black/80 font-semibold flex items-center shadow-sm text-[13px] px-3 sm:px-4">
+                    <Button
+                        onClick={() => toast("Exporting Report", { description: "Your analytics dashboard data is being compiled into a PDF." })}
+                        className="h-9 rounded-full bg-black text-white hover:bg-black/80 font-semibold flex items-center shadow-sm text-[13px] px-3 sm:px-4"
+                    >
                         <Download className="sm:mr-2 h-4 w-4" /> <span className="hidden sm:inline">Export Report</span>
                     </Button>
                 </div>
