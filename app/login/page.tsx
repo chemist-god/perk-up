@@ -1,3 +1,5 @@
+"use client"
+
 import Link from "next/link";
 import Image from "next/image";
 import { Button } from "@/components/ui/button";
@@ -5,6 +7,7 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/icons/logo";
 import { CheckCircle2 } from "lucide-react";
+import { toast } from "sonner";
 
 export default function LoginPage() {
     return (
@@ -27,7 +30,7 @@ export default function LoginPage() {
 
                     <div className="mt-10">
                         <div>
-                            <form action="#" method="POST" className="space-y-5">
+                            <form onSubmit={(e) => { e.preventDefault(); toast("Authenticating", { description: "Verifying your credentials..." }) }} className="space-y-5">
                                 <div className="space-y-2">
                                     <Label htmlFor="email">Work email</Label>
                                     <Input id="email" name="email" type="email" autoComplete="email" required className="h-11 shadow-sm" />
@@ -61,7 +64,12 @@ export default function LoginPage() {
                             </div>
 
                             <div className="mt-6 grid grid-cols-2 gap-4">
-                                <Button variant="outline" className="w-full h-11 bg-background hover:bg-muted text-foreground flex items-center justify-center gap-2">
+                                <Button
+                                    variant="outline"
+                                    type="button"
+                                    onClick={() => toast("SSO Login", { description: "Connecting to your Google Workspace account..." })}
+                                    className="w-full h-11 bg-background hover:bg-muted text-foreground flex items-center justify-center gap-2"
+                                >
                                     <svg className="h-5 w-5" aria-hidden="true" viewBox="0 0 24 24">
                                         <path
                                             d="M12.0003 4.75C13.7703 4.75 15.3553 5.36002 16.6053 6.54998L20.0303 3.125C17.9502 1.19 15.2353 0 12.0003 0C7.31028 0 3.25527 2.69 1.28027 6.60998L5.27028 9.70498C6.21525 6.86002 8.87028 4.75 12.0003 4.75Z"
@@ -82,7 +90,12 @@ export default function LoginPage() {
                                     </svg>
                                     Google
                                 </Button>
-                                <Button variant="outline" className="w-full h-11 bg-background hover:bg-muted text-foreground flex items-center justify-center gap-2">
+                                <Button
+                                    variant="outline"
+                                    type="button"
+                                    onClick={() => toast("SSO Login", { description: "Connecting to your Microsoft Azure/365 account..." })}
+                                    className="w-full h-11 bg-background hover:bg-muted text-foreground flex items-center justify-center gap-2"
+                                >
                                     <svg className="h-5 w-5" aria-hidden="true" viewBox="0 0 21 21">
                                         <path fill="#f25022" d="M1 1h9v9H1z" />
                                         <path fill="#00a4ef" d="M1 11h9v9H1z" />
