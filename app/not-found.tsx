@@ -4,6 +4,7 @@ import Link from "next/link";
 import { ArrowLeft, Home, SearchX } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { useEffect, useState } from "react";
+import { toast } from "sonner";
 
 export default function NotFound() {
     const [mounted, setMounted] = useState(false);
@@ -60,6 +61,7 @@ export default function NotFound() {
                     <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 w-full max-w-[280px] sm:max-w-none mx-auto relative z-10">
                         <Button
                             asChild
+                            onClick={() => toast("Reticulating Splines", { description: "Attempting to return to the dashboard..." })}
                             size="lg"
                             className="w-full sm:w-auto min-w-[200px] h-12 sm:h-14 text-sm sm:text-base font-semibold rounded-full group shadow-[0_4px_14px_0_rgba(186,255,76,0.39)] hover:shadow-[0_6px_20px_rgba(186,255,76,0.23)] hover:-translate-y-0.5 transition-all duration-300 px-6"
                         >
@@ -70,7 +72,7 @@ export default function NotFound() {
                         </Button>
 
                         <Button
-                            onClick={() => window.history.back()}
+                            onClick={() => { toast("Time Travel Initiated", { description: "Going back to the previous sector..." }); setTimeout(() => window.history.back(), 500); }}
                             variant="outline"
                             size="lg"
                             className="w-full sm:w-auto min-w-[200px] h-12 sm:h-14 text-sm sm:text-base font-semibold rounded-full group bg-transparent hover:bg-muted/50 border-border/50 hover:border-foreground/20 backdrop-blur-md transition-all duration-300 px-6"
