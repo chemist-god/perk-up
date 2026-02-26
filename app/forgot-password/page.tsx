@@ -1,9 +1,12 @@
+"use client"
+
 import Link from "next/link";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 import { Logo } from "@/components/icons/logo";
 import { CheckCircle2, ArrowLeft } from "lucide-react";
+import { toast } from "sonner";
 
 export default function ForgotPasswordPage() {
     return (
@@ -26,7 +29,7 @@ export default function ForgotPasswordPage() {
 
                     <div className="mt-10">
                         <div>
-                            <form action="#" method="POST" className="space-y-6">
+                            <form onSubmit={(e) => { e.preventDefault(); toast.success("Recovery Email Sent", { description: "If an account exists, a link was sent to your inbox." }) }} className="space-y-6">
                                 <div className="space-y-2">
                                     <Label htmlFor="email">Email</Label>
                                     <Input id="email" name="email" type="email" autoComplete="email" placeholder="Enter your email" required className="h-11 shadow-sm" />
