@@ -9,8 +9,9 @@ import { Switch } from "@/components/ui/switch"
 import { Label } from "@/components/ui/label"
 import { Input } from "@/components/ui/input"
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
-import { User, Bell, Lock, Shield, Settings2, HelpCircle, Eye, EyeOff, Smartphone, Laptop, Globe, MessageSquare, Copy } from "lucide-react"
+import { User, Bell, Lock, Shield, Settings2, HelpCircle, Eye, EyeOff, Smartphone, Laptop, Globe, MessageSquare, Copy, CheckCircle2, AlertTriangle, Key } from "lucide-react"
 import { useState } from "react"
+import { toast } from "sonner"
 
 export default function SettingsPage() {
     const [showKey, setShowKey] = useState(false);
@@ -80,10 +81,23 @@ export default function SettingsPage() {
                                                 AT
                                             </div>
                                             <div className="flex flex-col gap-2">
-                                                <Button variant="outline" className="h-9 rounded-full border-black/10 text-black hover:bg-black/5 bg-transparent text-[13px] font-semibold">
+                                                <Button
+                                                    variant="outline"
+                                                    onClick={() => toast("Profile updated", {
+                                                        description: "Your new avatar has been applied successfully.",
+                                                        icon: <CheckCircle2 className="h-5 w-5 text-[#BAFF4C]" />
+                                                    })}
+                                                    className="h-9 rounded-full border-black/10 text-black hover:bg-black/5 bg-transparent text-[13px] font-semibold"
+                                                >
                                                     Change Avatar
                                                 </Button>
-                                                <Button variant="ghost" className="text-[13px] text-red-600 hover:text-red-700 hover:bg-red-50 h-8 rounded-full">
+                                                <Button
+                                                    variant="ghost"
+                                                    onClick={() => toast("Avatar removed", {
+                                                        description: "Your avatar has been reset to the default initials.",
+                                                    })}
+                                                    className="text-[13px] text-red-600 hover:text-red-700 hover:bg-red-50 h-8 rounded-full"
+                                                >
                                                     Remove
                                                 </Button>
                                             </div>
@@ -125,7 +139,14 @@ export default function SettingsPage() {
                                                 <h4 className="font-semibold text-[14px]">Delete Account</h4>
                                                 <p className="text-[13px] text-black/50 mt-1">Permanently remove your Data and Profile. This cannot be undone.</p>
                                             </div>
-                                            <Button variant="destructive" className="bg-red-600 text-white hover:bg-red-700 font-semibold rounded-full px-6">
+                                            <Button
+                                                variant="destructive"
+                                                onClick={() => toast("Account Deletion Requested", {
+                                                    description: "A secure link has been sent to ana@techflow.com to confirm deletion.",
+                                                    icon: <AlertTriangle className="h-5 w-5 text-red-500" />
+                                                })}
+                                                className="bg-red-600 text-white hover:bg-red-700 font-semibold rounded-full px-6"
+                                            >
                                                 Delete Account
                                             </Button>
                                         </div>
@@ -214,7 +235,13 @@ export default function SettingsPage() {
                                                 <Input type="password" placeholder="••••••••" className="rounded-xl border-black/10 h-11 px-4 focus-visible:ring-[#BAFF4C] transition-colors" />
                                             </div>
                                         </div>
-                                        <Button className="h-10 rounded-full bg-black text-white hover:bg-black/80 font-semibold px-6 shadow-sm">
+                                        <Button
+                                            className="h-10 rounded-full bg-black text-white hover:bg-black/80 font-semibold px-6 shadow-sm"
+                                            onClick={() => toast.success("Password Updated", {
+                                                description: "Your new password has been saved securely.",
+                                                icon: <Lock className="h-5 w-5 text-[#BAFF4C]" />
+                                            })}
+                                        >
                                             Update Password
                                         </Button>
 
@@ -229,7 +256,13 @@ export default function SettingsPage() {
                                                 </div>
                                                 <p className="text-[13px] text-black/60 max-w-sm leading-relaxed">Protect your account with an extra layer of security requiring a code from your mobile device.</p>
                                             </div>
-                                            <Button variant="outline" className="relative z-10 w-full sm:w-auto shrink-0 border-black/10 hover:border-black/20 hover:bg-black/5 text-black font-semibold rounded-xl bg-white h-11 sm:h-auto">
+                                            <Button
+                                                variant="outline"
+                                                onClick={() => toast("2FA Setup Started", {
+                                                    description: "Scan the QR code with your authenticator app on the next screen.",
+                                                })}
+                                                className="relative z-10 w-full sm:w-auto shrink-0 border-black/10 hover:border-black/20 hover:bg-black/5 text-black font-semibold rounded-xl bg-white h-11 sm:h-auto"
+                                            >
                                                 Enable 2FA
                                             </Button>
                                         </div>
@@ -283,7 +316,13 @@ export default function SettingsPage() {
                                             <CardTitle className="text-lg">Developer API Keys</CardTitle>
                                             <CardDescription>Keys to access the platform API and integrate with your software.</CardDescription>
                                         </div>
-                                        <Button className="shrink-0 h-9 rounded-full bg-black text-white hover:bg-black/80 text-[13px] font-semibold shadow-sm">
+                                        <Button
+                                            onClick={() => toast("New API Key Generated", {
+                                                description: "Your previous key will be expired in 24 hours.",
+                                                icon: <Key className="h-5 w-5 text-[#BAFF4C]" />
+                                            })}
+                                            className="shrink-0 h-9 rounded-full bg-black text-white hover:bg-black/80 text-[13px] font-semibold shadow-sm"
+                                        >
                                             Generate New Key
                                         </Button>
                                     </CardHeader>
@@ -302,7 +341,15 @@ export default function SettingsPage() {
                                                         <Button variant="ghost" size="icon" className="h-8 w-8 text-black/50 hover:text-black hover:bg-black/5 rounded-lg" onClick={() => setShowKey(!showKey)}>
                                                             {showKey ? <EyeOff className="h-4 w-4" /> : <Eye className="h-4 w-4" />}
                                                         </Button>
-                                                        <Button variant="ghost" size="icon" className="h-8 w-8 text-black/50 hover:text-black hover:bg-black/5 rounded-lg">
+                                                        <Button
+                                                            variant="ghost"
+                                                            size="icon"
+                                                            onClick={async () => {
+                                                                await navigator.clipboard.writeText("pk_live_51XXXXXXXXXXXXXXX");
+                                                                toast("Copied to clipboard", { description: "API Secret Key copied to clipboard." });
+                                                            }}
+                                                            className="h-8 w-8 text-black/50 hover:text-black hover:bg-black/5 rounded-lg"
+                                                        >
                                                             <Copy className="h-4 w-4" />
                                                         </Button>
                                                     </div>
@@ -402,7 +449,12 @@ export default function SettingsPage() {
                                             <h2 className="text-2xl font-bold mb-2 tracking-tight">Need direct assistance?</h2>
                                             <p className="text-white/70 text-[14px] max-w-sm leading-relaxed">Our enterprise support team is available 24/7 to solve your integration, billing, and account issues.</p>
                                         </div>
-                                        <Button className="shrink-0 h-11 rounded-full bg-white text-black hover:bg-[#BAFF4C] font-bold px-8 transition-colors shadow-sm text-[14px]">
+                                        <Button
+                                            onClick={() => toast("Support ticket created", {
+                                                description: "Ticket #4182 has been opened. We will respond shortly.",
+                                            })}
+                                            className="shrink-0 h-11 rounded-full bg-white text-black hover:bg-[#BAFF4C] font-bold px-8 transition-colors shadow-sm text-[14px]"
+                                        >
                                             Open Support Ticket
                                         </Button>
                                     </CardContent>
